@@ -1,0 +1,8 @@
+flask
+pickle
+base64
+io
+matplotlib
+pandas
+numpy
+datetime

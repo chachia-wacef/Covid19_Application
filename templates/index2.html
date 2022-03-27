@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Navigation Bar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!-- Begin Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+	    <a class="navbar-brand" href="/home">
+        Covid 19 Application
+      </a>
+    </div>
+  </div>
+</nav>
+<!-- End Navbar -->
+
+
+<!-- Begin Description of our Application -->
+<div class="container">
+  <br>
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#expand">About US</a>
+        </h4>
+      </div>
+      <div id="expand" class="panel-collapse collapse">
+        <p class="'description">
+          Cette plateforme permet de suivre l'évolution du nombre de cas positifs détectés dans un pays selon les pays disponibles. Nous avons commencé par la Tunisie, mais à l'avenir nous ajouterons d'autres pays. D'autre part, pour vous aider à obtenir des informations sur le covid-19 qui pourraient ne pas être présentes sur notre plateforme, nous vous fournissons quelques liens utiles.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- End Description of our Application -->
+
+<!-- Begin Prediction part -->
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col col-lg-6">
+      <form action="{{ url_for('y_predict')}}"method="post">
+        <ul>
+          
+            <label for="exampleFormControlTextarea0" class="form-label">Country</label>
+          <li>
+            <input type="text" name="countries" list="exampleList" placeholder="Country">
+            <datalist id="exampleList">
+              <option value="Tunisia">  
+            </datalist>        
+          </li>
+          
+            <label for="exampleFormControlTextarea1" class="form-label" >Begin date</label>
+          <li>
+            <input type="date" max=Date() min="2020-01-01" name="the_date1" required="required">
+          </li>
+          
+          
+            <label for="exampleFormControlTextarea2" class="form-label" >End date</label>
+          <li>
+            <input type="date" max=Date() min="2020-01-01" name="the_date2" required="required">
+          </li>
+        </ul>
+        <br>
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      </form>
+    </div>
+    <div class="col col-lg-6">
+      <button type="submit" class="btn btn-primary" style="position:absolute;" (onclick)="functionToExecute(pred_img)">Reset</button>
+      <!--
+      <img id="picture1" class="fit-picture" src="{{url_for('static', filename='corona.jpg')}}" alt="Covid">
+      
+      
+      <img id="picture2" src="data:image/png;base64,{{ pred_img }}">
+      --> 
+      {%if pred_img == 'no' %}
+      <img id="picture1" class="fit-picture" src="{{url_for('static', filename='corona.jpg')}}" alt="Covid">
+      {% else %}
+      <img id="picture2" src="data:image/png;base64,{{ pred_img }}">
+      {% endif %}
+           
+      
+    </div>
+
+  
+  </div>
+
+</div>
+
+<script>
+  function functionToExecute(pred_img)
+  {
+    document.location.reload(true);
+    /*
+    alert(pred_img)
+    if(pred_img != 'no'){
+        document.getElementById('picture2').remove();
+        pred_img = 'no';
+        document.location.reload(true);
+        console.log(pred_img);
+    }
+    */
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+body {
+	background-image: url("../back.jpg");
+	background-repeat: repeat-y;
+	min-height: 100vh;
+	background-size: cover;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+	font-family: arial,x-locale-body,sans-serif;
+	letter-spacing: -.0027777778rem;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 100%;
+	line-height: 1.75;
+}
+
+
+li{
+	list-style-type: none;
+}
